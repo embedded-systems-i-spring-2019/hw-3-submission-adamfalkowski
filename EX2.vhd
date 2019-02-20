@@ -46,7 +46,7 @@ architecture decoder1t2_arc of decoder1t2 is
         
         end case;
        end process;   
-end decoder1t2; 
+end decoder1t2_arc; 
 
 --entity declaration for register
 entity reg is
