@@ -100,10 +100,45 @@ architecture crk_ex2_arc of crk_ex2 is
         R_out: in std_logic_vector (7 downto 0)); 
   end component;
   --intermediate signal declaration
-  signal mux_result : std_logic_vectro(7 donwto 0); --no in or out bc its an intermediate signal
-      
-  
-        
+  signal mux_result : std_logic_vector(7 donwto 0); --no in or out bc its an intermediate signal
+  signal RA_result : std_logic_vector(7 downto 0); -- result of first register to be inputed to the second
+  signal RB_result :std_logic_vector(7 downto 0);       
+  signal decoder_result_1, decoder_result_2 : std_logic;
+          
+  begin
+    MUX_4_to_1: mux4t1 
+                        port map (
+                                  A => X,
+                                  B => Y,
+                                  C => Z,
+                                  D => RB_result,
+                                  MS => MS,
+                                  mux_out => mux_result
+                                  );
+    Decoder_1_to_2: decoder1t2 
+                          portmap (
+                                   DS => DS,
+                                   D1 => decoder_result_1,
+                                   D2 => decoder_result_2
+                                   );
+
+   RegisterA: reg
+                          portmap (
+                                    R_in => mux_result,
+                                    CLK => CLK,
+                                    LD => decoder_result_2,
+                                    R_out => RA_result
+                                   );
+ RegisterB reg
+                          portmap (
+                                    R_in => RA_result,
+                                    CLK => CLK,
+                                    LD => decoder_result_1
+                                    R_out => RB_result
+                                   );
+RA_result => RA;
+RB_result => RB;
+end crk_ex2_arc;
            
            
     
