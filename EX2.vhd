@@ -1,7 +1,7 @@
 --excersize 2 (using structural modeling)
 
 library IEEE;
-use IEEE.std_logic_1164.all;
+use IEEE.std_logic_1164.ALL;
 
 --entity declaration for 4:1 MUX
 entity mux4t1 is
@@ -20,6 +20,35 @@ entity mux4t1 is
                  D when "11",
                   (others => '0') when others;
     end mux4t1_arc;
+    
+    --entity declaration for 1:2 decoder
+    entity decoder1t2 is
+      port( DS: in std_logic;
+           D1: out std_logic;
+           D2: out std_logic);
+      end decoder1t2;
+      
+      --architecture for decoder
+      architecture decoder1t2_arc of decoder1t2 is 
+        begin
+          case DS is
+            when "0" => 
+                        D1 <= "1";
+                        D2 <= "0";
+            when "1" =>
+                        D1 <= "0";
+                        D2 <= "1";
+            when others =>
+                        D1 <= "0";
+                        D2 <= "0";
+          end case;
+            
+        
+       
+          
+        
+           
+           
     
     
     
