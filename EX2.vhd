@@ -31,6 +31,8 @@ end decoder1t2;
 --architecture for decoder
 architecture decoder1t2_arc of decoder1t2 is 
     begin
+      process(DS) 
+      begin
        case DS is
             when "0" => 
                         D1 <= "1";
@@ -41,7 +43,9 @@ architecture decoder1t2_arc of decoder1t2 is
             when others =>
                         D1 <= "0";
                         D2 <= "0";
+        
         end case;
+       end process;   
 end decoder1t2; 
 
 --entity declaration for register
