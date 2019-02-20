@@ -129,7 +129,7 @@ architecture crk_ex2_arc of crk_ex2 is
                                     LD => decoder_result_2,
                                     R_out => RA_result
                                    );
- RegisterB reg
+ RegisterB: reg
                           portmap (
                                     R_in => RA_result,
                                     CLK => CLK,
@@ -139,6 +139,7 @@ architecture crk_ex2_arc of crk_ex2 is
 RA_result => RA;
 RB_result => RB;
 end crk_ex2_arc;
+
            
            
     
