@@ -60,7 +60,7 @@ architecture crk_ex3_arc of crk_ex3 is
   --component declaration
   component mux_2t1
     port( 
-          A,B : in std_logic_vector(7 downto 0);
+          x,y : in std_logic_vector(7 downto 0);
           SEL : in std_logic;
           mux_out: out std_logic_vector(7 downto 0)
          );
@@ -77,15 +77,15 @@ architecture crk_ex3_arc of crk_ex3 is
   begin
     Mux1_2_to_1: mux_2t1
                         port map (
-                                    A => X,
-                                    B => REGB_result,
+                                    x => X,
+                                    y => REGB_result,
                                     SEL => S1,
                                     mux_out => mux_result_1
                                   );
      Mux2_2_to_1: mux_2t1
                         port map (
-                                    A => REGA_result,
-                                    B => Y,
+                                    x => REGA_result,
+                                    y => Y,
                                     SEL => S0,
                                     mux_out => mux_result_2
                                   );
