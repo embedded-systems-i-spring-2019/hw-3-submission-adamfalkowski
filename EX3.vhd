@@ -7,7 +7,7 @@ entity mux_2t1 is
   port(
       X,Y : in std_logic_vector(7 downto 0);
       mux_out : out std_logic_vector(7 downto 0);
-      SEL : in std_logic;
+      SEL : in std_logic
        );
 end mux_2t1;
   
