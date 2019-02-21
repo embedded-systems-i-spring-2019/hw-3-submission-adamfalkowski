@@ -103,7 +103,7 @@ architecture crk_ex3_arc of crk_ex3 is
                                     R_out => REGB_result
                                   );   
       RB <= REGB_result;
- end crk_ex3; 
+ end crk_ex3_arc; 
          
   
   
