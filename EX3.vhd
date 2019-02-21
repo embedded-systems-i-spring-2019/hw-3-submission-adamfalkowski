@@ -14,18 +14,15 @@ end mux_2t1;
 --architecture declaration for 2 to 1 mux--------------------------------------------
 architecture mux_2t1_arc of mux_2t1 is
   begin
-    process(SEL)
-      begin
-        if (SEL = '0') then
-          mux_out <= X;
-        elseif (SEL = '1') then
-          mux_out <= Y;
-        else 
-          mux_out <= '0';
-        end if;
-     end process;
+    with SEL select
+        mux_out <= X when '0',
+                   Y when '1',
+                   (others => '0') when others;
 end mux_2t1_arc;
-          
+
+library IEEE;
+use IEEE.std_logic_1164.ALL;     
+     
 --entity declaration for register----------------------------------------------------
 entity reg is
   port( R_in: in std_logic_vector(7 downto 0);
@@ -45,7 +42,11 @@ architecture reg_arc of reg is
          end if;
        end if;
     end process;
-end reg_arc;          
+end reg_arc;    
+
+library IEEE;
+use IEEE.std_logic_1164.ALL;
+      
 --entity declaration for crk_ex3----------------------------------------------------- 
 entity crk_ex3 is
   port(
@@ -105,7 +106,3 @@ architecture crk_ex3_arc of crk_ex3 is
       RB <= REGB_result;
  end crk_ex3_arc; 
          
-  
-  
-    
-
