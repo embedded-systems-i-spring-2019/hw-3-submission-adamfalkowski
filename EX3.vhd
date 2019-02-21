@@ -15,8 +15,8 @@ end mux_2t1;
 architecture mux_2t1_arc of mux_2t1 is
   begin
     with SEL select
-        mux_out <= X when '0',
-                   Y when '1',
+        mux_out <= X when '1',
+                   Y when '0',
                    (others => '0') when others;
 end mux_2t1_arc;
 
@@ -58,7 +58,7 @@ end crk_ex3;
   
 architecture crk_ex3_arc of crk_ex3 is
   --component declaration
-  component mux2t1
+  component mux_2t1
     port( 
           A,B : in std_logic_vector(7 downto 0);
           SEL : in std_logic;
@@ -75,18 +75,18 @@ architecture crk_ex3_arc of crk_ex3 is
   --intermediate signal declarations
   signal mux_result_1, mux_result_2, REGA_result, REGB_result : std_logic_vector(7 downto 0);
   begin
-    Mux1_2_to_1: mux2t1
+    Mux1_2_to_1: mux_2t1
                         port map (
                                     A => X,
                                     B => REGB_result,
-                                    SEL => S0,
+                                    SEL => S1,
                                     mux_out => mux_result_1
                                   );
-     Mux2_2_to_1: mux2t1
+     Mux2_2_to_1: mux_2t1
                         port map (
                                     A => REGA_result,
                                     B => Y,
-                                    SEL => S1,
+                                    SEL => S0,
                                     mux_out => mux_result_2
                                   );
      REGA: reg
